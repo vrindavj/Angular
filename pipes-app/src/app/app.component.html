@@ -1,0 +1,92 @@
+<div class="container">
+  <h3>Payment Form</h3>
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Payee Name</label>
+      <input type="text" class="form-control" (input)="onNameChange($event)" />
+    </div>
+
+    <div class="col">
+      <label for="">
+        <b>Name</b>
+      </label>
+      <div>{{ name | titlecase }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="datefield">Payment Date</label>
+      <input
+        id="datefield"
+        type="date"
+        class="form-control"
+        (input)="onDateChange($event)"
+      />
+    </div>
+    <div class="col">
+      <label>
+        <b> Date</b>
+      </label>
+      <div>{{ date | date : "MMMM d, y" }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Payment Amount</label>
+      <input
+        type="number"
+        class="form-control"
+        (input)="onAmountChange($event)"
+      />
+    </div>
+
+    <div class="col">
+      <label for="">
+        <b> Amount</b>
+      </label>
+      <div>{{ amount | currency : "EUR" }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Height</label>
+      <input
+        type="number"
+        class="form-control"
+        (input)="onHeightChange($event)"
+      />
+    </div>
+
+    <div class="col">
+      <label for="">
+        <b> Height</b>
+      </label>
+      <div>{{ height === 0 ? "" : (height | number : "1.1-3") }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Miles</label>
+      <input
+        type="number"
+        class="form-control"
+        (input)="onMilesChange($event)"
+      />
+    </div>
+
+    <div class="col">
+      <label for="">
+        <b> Kilometers</b>
+      </label>
+      <!-- displaying div based on converted(piped) value == conidtion in paranthesis-->
+      <!-- <div *ngIf="(miles | convert : 'km') > 10"> -->
+      <div>
+        {{ miles | convert : "cm" | number : "1.0-2" }}
+      </div>
+    </div>
+  </div>
+</div>
